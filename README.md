@@ -21,6 +21,8 @@ An ambient assisted living (AAL) telemetry and monitoring pipeline designed for 
 ## 📊 System Architecture
 
 
+
+```text
 +---------------------------------------------------------+
 | ESP32 Microcontroller / Wi-Fi Router Node               |
 | Streams Raw Channel State Information (CSI) via UDP     |
