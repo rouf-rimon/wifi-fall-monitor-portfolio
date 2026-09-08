@@ -1,9 +1,6 @@
-# Privacy-First Wi-Fi CSI Fall & Inactivity Monitor (AAL)
+https://wifi-fall-monitor-portfolio.streamlit.app
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-HMI-ff4b4b.svg)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GDPR Compliant](https://img.shields.io/badge/Privacy-100%25%20Device--Free-success.svg)](https://gdpr-info.eu/)
+# Privacy-First Wi-Fi CSI Fall & Inactivity Monitor (AAL)
 
 An ambient assisted living (AAL) telemetry and monitoring pipeline designed for older adults or vulnerable individuals. The system analyzes router Wi-Fi Channel State Information (CSI) and subcarrier variance to detect human movement, sudden falls, and prolonged stillness in private zones (bathrooms/bedrooms) **without invasive cameras or wearables**.
 
@@ -21,3 +18,38 @@ An ambient assisted living (AAL) telemetry and monitoring pipeline designed for 
 ---
 
 ## 📊 System Architecture
+
++---------------------------------------------------------+
+| ESP32 Microcontroller / Wi-Fi Router Node               |
+| Streams Raw Channel State Information (CSI) via UDP     |
++---------------------------+-----------------------------+
+| Subcarrier Amplitudes
+v
++---------------------------------------------------------+
+| Python Ingestion & Preprocessing Backend                |
+| NumPy / Pandas: Phase filtering & rolling variance      |
++---------------------------+-----------------------------+
+|
++--------------+--------------+
+|                             |
+v                             v
++-------------------------+   +-------------------------+
+| Fall Detection Engine   |   | Inactivity Watchdog     |
+| - High variance spike   |   | - Floor Flatline > 5min |
+| - Sharp signal drop     |   | - Bed Stillness > 1hr   |
++------------+------------+   +------------+------------+
+|                             |
++--------------+--------------+
+| Anomaly Triggered
+v
++---------------------------------------------------------+
+| FastAPI Webhook & Automated SOS Dispatch                |
+| Sends instant alert to caregiver / emergency contact    |
++---------------------------------------------------------+
+
+## 🛠️ Tech Stack
+
+* **Language:** Python
+* **Data Processing & Signal Analysis:** NumPy, Pandas, Collections
+* **HMI & Dashboard:** Streamlit
+* **Integration & Alerting:** FastAPI webhooks / Twilio-ready REST API hooks
