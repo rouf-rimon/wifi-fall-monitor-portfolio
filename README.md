@@ -1,12 +1,13 @@
-https://wifi-fall-monitor-portfolio.streamlit.app
 
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://wifi-fall-monitor-portfolio.streamlit.app)
 # Privacy-First Wi-Fi CSI Fall & Inactivity Monitor (AAL)
 
 An ambient assisted living (AAL) telemetry and monitoring pipeline designed for older adults or vulnerable individuals. The system analyzes router Wi-Fi Channel State Information (CSI) and subcarrier variance to detect human movement, sudden falls, and prolonged stillness in private zones (bathrooms/bedrooms) **without invasive cameras or wearables**.
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 * **100% Privacy-First Architecture:** Eliminates cameras and wearable devices entirely, satisfying strict European data privacy standards (GDPR) for sensitive zones like bedrooms and bathrooms.
 * **Sliding-Window Anomaly Detection:** Processes real-time subcarrier amplitude variance using NumPy to distinguish between standard motion and emergency states.
@@ -47,9 +48,3 @@ v
 | Sends instant alert to caregiver / emergency contact    |
 +---------------------------------------------------------+
 
-## 🛠️ Tech Stack
-
-* **Language:** Python
-* **Data Processing & Signal Analysis:** NumPy, Pandas, Collections
-* **HMI & Dashboard:** Streamlit
-* **Integration & Alerting:** FastAPI webhooks / Twilio-ready REST API hooks
