@@ -20,31 +20,31 @@ An ambient assisted living (AAL) telemetry and monitoring pipeline designed for 
 
 ## 📊 System Architecture
 
+
 +---------------------------------------------------------+
 | ESP32 Microcontroller / Wi-Fi Router Node               |
 | Streams Raw Channel State Information (CSI) via UDP     |
 +---------------------------+-----------------------------+
-| Subcarrier Amplitudes
-v
+                            | Subcarrier Amplitudes
+                            v
 +---------------------------------------------------------+
 | Python Ingestion & Preprocessing Backend                |
 | NumPy / Pandas: Phase filtering & rolling variance      |
 +---------------------------+-----------------------------+
-|
-+--------------+--------------+
-|                             |
-v                             v
+                            |
+             +--------------+--------------+
+             |                             |
+             v                             v
 +-------------------------+   +-------------------------+
 | Fall Detection Engine   |   | Inactivity Watchdog     |
 | - High variance spike   |   | - Floor Flatline > 5min |
 | - Sharp signal drop     |   | - Bed Stillness > 1hr   |
 +------------+------------+   +------------+------------+
-|                             |
-+--------------+--------------+
-| Anomaly Triggered
-v
+             |                             |
+             +--------------+--------------+
+                            | Anomaly Triggered
+                            v
 +---------------------------------------------------------+
 | FastAPI Webhook & Automated SOS Dispatch                |
 | Sends instant alert to caregiver / emergency contact    |
 +---------------------------------------------------------+
-
